@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Produkt
 
 def lista_produktow(request):
-    # Pobieramy wszystkie produkty z bazy danych
     produkty = Produkt.objects.all()
-    
-    # Przekazujemy je do szablonu HTML
     return render(request, 'core/lista_produktow.html', {'produkty': produkty})
+
+def szczegoly_produktu(request, pk):
+    produkt = get_object_or_404(Produkt, pk=pk)
+    return render(request, 'core/szczegoly_produktu.html', {'produkt': produkt})

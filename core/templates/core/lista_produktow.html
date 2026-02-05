@@ -12,7 +12,11 @@
         <ul>
             {% for produkt in produkty %}
                 <li>
-                    <strong>{{ produkt.nazwa }}</strong> 
+                    <strong>
+                        <a href="{% url 'szczegoly_produktu' produkt.pk %}" style="text-decoration: none; color: #2980b9;">
+                            {{ produkt.nazwa }}
+                        </a>
+                    </strong>
                     <br>
                     <small>Kategoria: {{ produkt.kategoria.nazwa }}</small>
                     <br>

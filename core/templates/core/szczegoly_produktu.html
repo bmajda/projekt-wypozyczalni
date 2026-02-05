@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ produkt.nazwa }} - Szczegóły</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px;">
+        <a href="{% url 'lista_produktow' %}">← Wróć do listy</a>
+        
+        <h1>{{ produkt.nazwa }}</h1>
+        
+        <p><strong>Kategoria:</strong> {{ produkt.kategoria.nazwa }}</p>
+        <p><strong>Producent:</strong> {{ produkt.producent.nazwa }}</p>
+        
+        <p><strong>Opis:</strong><br> 
+        {{ produkt.opis|default:"Brak opisu." }}</p>
+
+        <hr>
+        
+        <h3>Status:</h3>
+        {% if produkt.dostepny %}
+            <h2 style="color: green;">Dostępny</h2>
+        {% else %}
+            <h2 style="color: red;">Wypożyczony</h2>
+        {% endif %}
+    </div>
+
+</body>
+</html>
