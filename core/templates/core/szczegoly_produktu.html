@@ -27,6 +27,14 @@
         {% else %}
             <h2 style="color: red;">Wypożyczony</h2>
         {% endif %}
+
+        <hr>
+        
+        <div style="margin-top: 20px;">
+            <a href="{% url 'zglos_awarie' produkt.pk %}" style="color: red; font-weight: bold;">
+                ⚠️ Zgłoś awarię / zniszczenie
+            </a>
+        </div>
     </div>
 
 </body>
