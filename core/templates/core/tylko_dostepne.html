@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wolny sprzęt</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <a href="{% url 'lista_produktow' %}">← Wróć do strony głównej</a>
+    <h1 style="color: green;">Tylko wolny sprzęt</h1>
+
+    <ul>
+        {% for produkt in produkty %}
+            <li>
+                <strong><a href="{% url 'szczegoly_produktu' produkt.pk %}">{{ produkt.nazwa }}</a></strong>
+                <br>
+                <span style="color: green;">Gotowy do wypożyczenia</span>
+            </li>
+        {% empty %}
+            <p>Niestety, wszystko wypożyczone :c</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

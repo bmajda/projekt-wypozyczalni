@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Awarii</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <a href="{% url 'lista_produktow' %}">← Wróć do strony głównej</a>
+    <h1 style="color: red;">Zgłoszone usterki</h1>
+
+    {% if awarie %}
+        <ul>
+            {% for awaria in awarie %}
+                <li style="border-left: 5px solid red;">
+                    <strong>{{ awaria.produkt.nazwa }}</strong> <small>({{ awaria.data_zgloszenia }})</small><br>
+                    Opis: {{ awaria.opis_usterki }}<br>
+                    Status: {% if awaria.czy_naprawione %}Naprawione{% else %}Do naprawy{% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak zgłoszonych awarii. Wszystko działa!</p>
+    {% endif %}
+</body>
+</html>

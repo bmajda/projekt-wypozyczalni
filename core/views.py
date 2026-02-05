@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Produkt
+from .models import Produkt, Awaria
 from .forms import AwariaForm
 
 def lista_produktow(request):
@@ -27,3 +27,11 @@ def zglos_awarie(request, pk):
         form = AwariaForm()
 
     return render(request, 'core/zglos_awarie.html', {'form': form, 'produkt': produkt})
+
+def lista_awarii(request):
+    awarie = Awaria.objects.all().order_by('-data_zgloszenia')
+    return render(request, 'core/lista_awarii.html', {'awarie': awarie})
+
+def tylko_dostepne(request):
+    produkty = Produkt.objects.filter(dostepny=True)
+    return render(request, 'core/tylko_dostepne.html', {'produkty': produkty})

@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
+    <nav style="background: #ddd; padding: 10px; text-align: center; margin-bottom: 20px;">
+        <a href="{% url 'lista_produktow' %}" style="margin: 0 10px; font-weight: bold;">🏠 Wszystko</a>
+        <a href="{% url 'tylko_dostepne' %}" style="margin: 0 10px; color: green;">🟢 Tylko wolne</a>
+        <a href="{% url 'lista_awarii' %}" style="margin: 0 10px; color: red;">🛠️ Lista awarii</a>
+    </nav>
+    
     <h1>Dostępny sprzęt</h1>
 
     {% if produkty %}
