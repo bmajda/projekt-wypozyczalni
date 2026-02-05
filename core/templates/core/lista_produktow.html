@@ -1,0 +1,33 @@
+{% load static %}  <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wypożyczalnia Sprzętu</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <h1>Dostępny sprzęt</h1>
+
+    {% if produkty %}
+        <ul>
+            {% for produkt in produkty %}
+                <li>
+                    <strong>{{ produkt.nazwa }}</strong> 
+                    <br>
+                    <small>Kategoria: {{ produkt.kategoria.nazwa }}</small>
+                    <br>
+                    Stan: 
+                    {% if produkt.dostepny %}
+                        <span style="color: green; font-weight: bold;">Dostępny</span>
+                    {% else %}
+                        <span style="color: red; font-weight: bold;">Zajęty</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="text-align: center;">Brak sprzętu w bazie.</p>
+    {% endif %}
+
+</body>
+</html>
